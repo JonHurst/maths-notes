@@ -1,0 +1,153 @@
+\documentclass[a5paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{txfonts}
+\usepackage{bm}
+\usepackage{geometry}
+
+\title{3d Lines and Planes}
+\author{Jon Hurst}
+
+\begin{document}
+\maketitle
+\section{Planes}
+
+Any plane can be completely determined by a single position vector. The
+direction of the vector is normal to the plane, which fixes its orientation, and
+the length of the vector is the distance from the origin, which fixes its
+position in space. To be more general, we can use a unit normal vector and a
+length to achieve the same effect.
+
+If $\bm{r}$ is the position vector of any point on the plane, then the length of
+the projection of $\bm{r}$ on $\bm{\hat{n}}$ will be constant and equal to $d$,
+the distance of the plane from the origin along the unit normal vector. Thus,
+for any point on the plane:
+
+\begin{equation}
+  \bm{r} \cdot \bm{\hat{n}} = |\bm{r}|cos(\theta) = d \label{eq:1.1}
+\end{equation}
+
+If $\bm{n}$ is just any normal vector (i.e. not necessarily a unit vector) then
+this is modified to:
+
+\begin{equation}
+  \bm{r} \cdot \bm{n} = |\bm{r}||\bm{n}|cos(\theta) = d|\bm{n}| = D \label{eq:1.2}
+\end{equation}
+
+where $D$ is a constant specific to the combination of the plane and the normal
+vector that has been used. Note that (\ref{eq:1.2}) can be converted to
+(\ref{eq:1.1}) simply by dividing through by $|\bm{n}|$.
+
+To convert to cartesian form we substitute
+
+\begin{eqnarray}
+  \bm{r} = x\bm{i} + y\bm{j} + z\bm{k} \\
+  \bm{n} = a\bm{i} + b\bm{j} + c\bm{k}
+\end{eqnarray}
+
+which gives
+
+\begin{equation}
+  ax + by + cz = D
+\end{equation}
+
+with $d$, the distance of the plane from the origin being
+
+\begin{equation}
+  d = \frac{D}{\sqrt{a^2 + b^2 + c^2}}
+\end{equation}
+
+Converting between vector and cartesian forms, then, is simply a matter of
+reading the cartesian coefficients as the coefficients of the normal vector and
+copying the $D$.
+
+If you have two parallel planes, both with unit normal vector $\bm{\hat{n}}$
+such that
+
+\begin{eqnarray}
+  \bm{r_1} \cdot \bm{\hat{n}} = d_1 \nonumber\\
+  \bm{r_2} \cdot \bm{\hat{n}} = d_2 \nonumber
+\end{eqnarray}
+
+then the distance between them, $s$ is given by
+
+\begin{equation}
+  s\ =\ |d_1 - d_2|\ =\ |(\bm{r_1} - \bm{r_2}) \cdot \bm{\hat{n}})| \label{eq:1.3}
+\end{equation}
+
+This also allows the distance from a point to the plane to be easily found -- we
+just find the distance to the parallel plane that contains the point.
+Canonically, if we have a plane $ax + by + cz = D$ and a point $(p, q, r)$ then
+the distance, $s$ between the point and the plane is
+
+\begin{equation}
+  s = \frac{|\ (p, q, r) \cdot (a, b, c) - D\ |}{\sqrt{a^2 + b^2 + c^2}}
+\end{equation}
+
+\section{Lines}
+
+If the point $\bm{P}(x_0, y_0, z_0)$ has position vector $\bm{x_0} = x_0\bm{i} +
+y_0\bm{j} + z_0\bm{k}$ and $\bm{a} = a\bm{i} + b\bm{j} + c\bm{k}$ is a direction
+vector, then any point on the line parallel to $\bm{a}$ which passes through
+$\bm{P}$ has position vector $\bm{r}$ where:
+
+\begin{equation}
+  \bm{r} = \bm{x_0} + \lambda\bm{a} \hspace{3em};\ \lambda\in\Re
+\end{equation}
+
+An alternative restriction comes from the fact that the magnitude of the cross
+product is zero for parallel lines:
+
+\begin{equation}
+  (\bm{r} - \bm{x_0}) \times \bm{a} = \bm{0}
+\end{equation}
+
+The canonical cartesian form can be found by equating components and eliminating
+$\lambda$. If $\bm{r} = x\bm{i} + y\bm{j} + z\bm{k}$ then:
+
+\begin{equation}
+  \frac{x - x_0}{a} = \frac{y - y_0}{b} = \frac{z - z_0}{c}
+\end{equation}
+
+Note how the that if we disregard the right-most equality we can convert what is
+left into the form $y = mx + c$; i.e. the left-most equality defines the image
+of the line on the plane $z = 0$ and the remaining equality provides the value
+for $z$ at each point on that image.
+
+A direction vector can easily be read off from the denominators of this standard
+form. Mentally reintroducing $\lambda$ helps to remember how this is done.
+
+The direction vector can be used to find ``direction cosines'', which are the
+cosines of the angles between the direction vector and $\bm{i}$, $\bm{j}$ and
+$\bm{k}$. For example, for the direction cosine of $\bm{a} = a\bm{i} + b\bm{j} +
+c\bm{k}$ for $\bm{i}$:
+
+\begin{equation}
+  \bm{a} \cdot \bm{i} = |\bm{a}|cos(\theta_i) \Rightarrow cos(\theta_i) = \frac{a}{|\bm{a}|}
+\end{equation}
+
+The set of planes containing a single line is infinite since a line has a circle
+of normal vectors, but this set is an infinitesimal subset of the set of all
+planes. This is analogous to a line and an area both having an infinite number
+of points, but the area having infinitely more. This means that it is not
+necessarily possible to find a single plane that contains two lines.
+
+A second line will, however, also have a circle of normal vectors, and if the
+centre of the two circles are co-located they will intersect either in a single
+line or, if the lines were parallel, be completely co-incident. If there is a
+single line, then that line represents a \textit{common} normal vector, and thus
+parallel planes can always be found that each contain one of the lines. This
+allows us to calculate the minimum distance between two lines.
+
+The cross product of the direction vectors of the lines is a common normal
+vector, and each to the origin points is a point on their respective containing
+parallel planes. This completely defines the planes, so we can use
+(\ref{eq:1.3}) to find the distance between them.
+
+If this distance between the parallel planes containing the lines happens to be
+zero and the lines are not parallel, then the lines must intersect. Finding the
+point of intersection is probably most easily done by finding the point of
+intersection of the projections in a suitable plane, e.g $z = 0$, and then
+checking whether the $z$ values are the same.
+
+\end{document}

@@ -1,0 +1,192 @@
+\documentclass[a5paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{txfonts}
+\usepackage{bm}
+\usepackage{geometry}
+\usepackage{graphics}
+
+
+\title{Matrices}
+\author{Jon Hurst}
+
+\begin{document}
+\maketitle
+
+\section*{Linear transformations}
+
+A linear transformation is a transformation where the origin is invariant and
+any line remains a line. Examples are rotations, reflections, shears and
+scaling/stretch.
+
+A point $(x,y,z)$ can be linearly transformed to a new point $(x^\prime,
+y^\prime, z^\prime)$ by pre-multiplying by a suitable numerical matrix:
+
+\begin{equation}
+  \left(
+  \begin{array}{ccc}
+    a_{11} & a_{12} &a_{13} \\
+    a_{21} & a_{22} &a_{23} \\
+    a_{31} & a_{32} &a_{33}
+  \end{array} \right)
+  \left(
+  \begin{array}{c}
+    x\\ y\\ z
+  \end{array} \right) =
+  \left(
+  \begin{array}{c}
+    x^\prime\\ y^\prime\\ z^\prime
+  \end{array} \right)
+\end{equation}
+
+The position vector, $\bm{r}^\prime$ of the new point will be:
+
+\begin{eqnarray}
+  \bm{r}^\prime & = &(a_{11}x + a_{12}y + a_{13}z)\ \bm{i} \\
+  & & \mbox{} + (a_{21}x + a_{22}y + a_{23}z)\ \bm{j} \nonumber\\
+  & & \mbox{} + (a_{31}x + a_{32}y + a_{33}z)\ \bm{k} \nonumber \\
+  & = & x(a_{11}\bm{i} + a_{21}\bm{j} + a_{31}\bm{k}) \nonumber \\
+  &  & y(a_{12}\bm{i} + a_{22}\bm{j} + a_{32}\bm{k}) \nonumber \\
+  &  & z(a_{13}\bm{i} + a_{23}\bm{j} + a_{33}\bm{k}) \nonumber
+\end{eqnarray}
+
+Thus the new point can be found by treating each column of the transformation
+matrix as a new basis vector and applying the original coefficients to these new
+basis vectors. In particular, investigating the points $(1,0,0)$, $(0,1,0)$ and
+$(0,0,1)$ will often give a good idea of the nature of the transformation.
+
+\section*{Change of reference frame}
+
+Let $\bm{i}$, $\bm{j}$ and $\bm{k}$ be a set of basis vectors. Let $\bm{l}$,
+$\bm{m}$ and $\bm{n}$ be basis vectors, defined in terms of $\bm{i}$, $\bm{j}$
+and $\bm{k}$, that we wish to use as an alternative reference frame:
+
+\begin{eqnarray*}
+    \bm{l} & = & a_{11}\bm{i} + a_{21}\bm{j} + a_{31}\bm{k} \\
+    \bm{m} & = & a_{12}\bm{i} + a_{22}\bm{j} + a_{32}\bm{k} \\
+    \bm{n} & = & a_{13}\bm{i} + a_{23}\bm{j} + a_{33}\bm{k}
+\end{eqnarray*}
+
+If $\bm{r} = x\bm{i} + y\bm{j} + z\bm{k}$, what we wish to find are the
+coefficients $x^\prime$, $y^\prime$ and $z^\prime$ such that $\bm{r} =
+x^\prime\bm{l} + y^\prime\bm{m} + z^\prime\bm{n}$. Note that $\bm{r}$ is the
+same in both cases -- the position of the point in space has not changed, only
+the reference frame.
+
+When calculating the effect of a transformation matrix, we take a set of
+coefficients, the original coordinates of a point, and apply those coefficients
+to a new set of basis vectors to find a new point. What we are attempting to do
+here is find a set of coefficients that, when applied to a new set of basis
+vectors, reach a given point. Thus the problem is equivalent to finding an
+unknown point, $(x^\prime, y^\prime, z^\prime)$ that when transformed by our new
+basis vectors produces the known point $(x, y, z)$:
+
+\begin{equation}
+  \left(
+  \begin{array}{ccc}
+    a_{11} & a_{12} &a_{13} \\
+    a_{21} & a_{22} &a_{23} \\
+    a_{31} & a_{32} &a_{33}
+  \end{array} \right)
+  \left(
+  \begin{array}{c}
+    x^\prime\\ y^\prime\\ z^\prime
+  \end{array} \right) =
+  \left(
+  \begin{array}{c}
+    x\\ y\\ z
+  \end{array} \right)
+\end{equation}
+
+\begin{equation}
+   \Rightarrow \hspace{3em} \left(
+  \begin{array}{c}
+    x^\prime\\ y^\prime\\ z^\prime
+  \end{array} \right) =
+  \left(
+  \begin{array}{ccc}
+    a_{11} & a_{12} &a_{13} \\
+    a_{21} & a_{22} &a_{23} \\
+    a_{31} & a_{32} &a_{33}
+  \end{array} \right)^{-1}
+  \left(
+  \begin{array}{c}
+    x\\ y\\ z
+  \end{array} \right)
+\end{equation}
+\section*{Diagonalisation}
+
+If $\bm{M}$ is a 3x3 transformation matrix with eigenvalue $\lambda$ and
+corresponding eigenvector $(e_1, e_2, e_3)$ then
+
+\begin{equation}
+  \bm{M}
+  \left( \begin{array}{c}
+    e_1\\
+    e_2\\
+    e_3
+  \end{array} \right) = \lambda
+  \left( \begin{array}{c}
+    e_1\\
+    e_2\\
+    e_3
+  \end{array} \right)
+\end{equation}
+
+If $\mu$ and $\nu$ are also eigenvalues with corresponding eigenvectors
+$\bm{f}$ and $\bm{g}$ respectively, the whole system can be written as:
+
+\begin{equation}
+  \bm{M}
+  \left( \begin{array}{ccc}
+    e_1 & f_1 & g_1\\
+    e_2 & f_2 & g_2\\
+    e_3 & f_3 & g_3
+  \end{array} \right) =
+  \left( \begin{array}{ccc}
+    e_1 & f_1 & g_1\\
+    e_2 & f_2 & g_2\\
+    e_3 & f_3 & g_3
+  \end{array} \right)
+  \left( \begin{array}{ccc}
+    \lambda & 0 & 0\\
+    0 & \mu & 0\\
+    0 & 0 & \nu
+  \end{array} \right)
+\end{equation}
+
+Note the order of the matrices on the right which is required to slot the
+eigenvalues into the right spots.
+
+We can therefore say that
+
+\begin{equation}
+  \bm{M}\left(
+  \begin{array}{c}
+    x \\ y \\ z
+  \end{array} \right) =
+  \left( \begin{array}{ccc}
+    e_1 & f_1 & g_1\\
+    e_2 & f_2 & g_2\\
+    e_3 & f_3 & g_3
+  \end{array} \right)
+  \left( \begin{array}{ccc}
+    \lambda & 0 & 0\\
+    0 & \mu & 0\\
+    0 & 0 & \nu
+  \end{array} \right)
+  \left( \begin{array}{ccc}
+    e_1 & f_1 & g_1\\
+    e_2 & f_2 & g_2\\
+    e_3 & f_3 & g_3
+  \end{array} \right)^{-1}
+  \left( \begin{array}{c}
+    x \\ y \\ z
+  \end{array} \right)
+\end{equation}
+
+Thus the transformation produced by $\bm{M}$ is a change of reference frame to a
+frame based on the eigenvectors (known as the eigenbasis) followed by a stretch
+in the eigenbasis frame followed by conversion back to the original reference
+frame.
+\end{document}
