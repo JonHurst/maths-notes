@@ -74,12 +74,12 @@ same in both cases -- the position of the point in space has not changed, only
 the reference frame.
 
 When calculating the effect of a transformation matrix, we take a set of
-coefficients, the original coordinates of a point, and apply those coefficients
-to a new set of basis vectors to find a new point. What we are attempting to do
-here is find a set of coefficients that, when applied to a new set of basis
-vectors, reach a given point. Thus the problem is equivalent to finding an
-unknown point, $(x^\prime, y^\prime, z^\prime)$ that when transformed by our new
-basis vectors produces the known point $(x, y, z)$:
+coefficients, the coordinates of a point, and apply those coefficients to a new
+set of basis vectors to find a new point. What we are attempting to do here is
+find a set of coefficients that, when applied to a new set of basis vectors,
+reach a given point. Thus the problem is equivalent to finding an unknown point,
+$(x^\prime, y^\prime, z^\prime)$ that when transformed by our new basis vectors
+produces the known point $(x, y, z)$:
 
 \begin{equation}
   \left(
