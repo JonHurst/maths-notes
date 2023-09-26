@@ -39,7 +39,10 @@
      id="layer1">
     <g
        id="g7"
-       transform="translate(15.879032)">
+       transform="translate(15.879032)"
+       inkscape:export-filename="arrangement-grouping.pdf"
+       inkscape:export-xdpi="65.83"
+       inkscape:export-ydpi="65.83">
       <g
          id="g5"
          transform="translate(-0.09075805,0.60635663)">
@@ -1529,6 +1532,6 @@
        xml:space="preserve"
        transform="scale(0.26458333)"
        id="text5"
-       style="fill:#ffffff;font-size:13.33333333px;-inkscape-font-specification:'IBM Plex Sans';font-family:'IBM Plex Sans';line-height:1.25;text-decoration:none;text-decoration-color:#000000;stroke-width:0.75590551;fill-opacity:1;stroke:#000000;stroke-opacity:1;white-space:pre;shape-inside:url(#rect5)" />
+       style="font-size:13.3333px;line-height:1.25;font-family:'IBM Plex Sans';-inkscape-font-specification:'IBM Plex Sans';text-decoration:none;text-decoration-line:none;text-decoration-color:#000000;white-space:pre;shape-inside:url(#rect5);display:inline;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.755906;stroke-opacity:1" />
   </g>
 </svg>
