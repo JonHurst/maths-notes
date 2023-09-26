@@ -259,5 +259,85 @@ Rearranging equation (\ref{eq:5}) gives Bayes Theorem for two events
 
 \noindent Figure \ref{fig:3} shows this relationship on a tree diagram.
 
+\section{Random variables}
+
+A random variable is a variable whose possible values are numerical outcomes of
+a random phenomenon. It embodies multiple values simultaneously in the form of a
+probability mass function. You \textit{cannot} retrieve a value from a random
+variable, you can only retrieve the probability that the outcome of the random
+variable will be a value or a within a range of values.
+
+Operations on a random variable are transformations of the probability mass
+function. For example if $X$ is a random selection of an equally weighted
+integer in the range $[-2, 2]$ then its PMF is
+
+\begin{equation}
+  \begin{array}{c|ccccc}
+    x & -2 & -1 & 0 & 1 & 2 \\[3pt]
+    \hline \\[-8pt]
+    P(X=x) & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5}
+  \end{array}
+\end{equation}
+
+\noindent If $Y=X^2$ then its PMF is
+
+\begin{equation}
+  \begin{array}{c|ccc}
+    x & 0 & 1 & 4 \\[3pt]
+    \hline \\[-8pt]
+    P(Y=x) & \frac{1}{5} & \frac{2}{5} & \frac{2}{5}
+  \end{array}
+\end{equation}
+
+\noindent And if $Z = \frac{1}{2}(X - 1)$ its PMF is
+
+\begin{equation}
+  \begin{array}{c|ccccc}
+    x & -\frac{3}{2} & -1 & -\frac{1}{2} & 0 & \frac{1}{2} \\[3pt]
+    \hline \\[-8pt]
+    P(Z=x) & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5}
+  \end{array}
+\end{equation}
+
+\noindent In general if $Y = g(X)$ then its PMF is
+
+\begin{equation}
+  \begin{array}{c|ccccc}
+    x & g(-2) & g(-1) & g(0) & g(1) & g(2) \\[3pt]
+    \hline \\[-8pt]
+    P(Z=x) & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5}
+  \end{array}
+\end{equation}
+
+with any duplicate values in the top line being combined.
+
+When dealing with functions of two random variables, you are dealing with a
+three dimensional probability mass function. For example, if $X$ is defined as
+above and $Y$ is a random integer in the range $[0.2]$ then if $Z = X + 2Y$, the
+results table is
+
+\begin{equation}
+  \begin{array}{c|ccccc}
+    y\backslash x & -2 & -1 & 0 & 1 & 2 \\[3pt]
+    \hline \\[-8pt]
+    0 & -2 & -1 & 0 & 1 & 2\\
+    1 & 0 & 1 & 2 & 3 & 4\\
+    2 & 2 & 3 & 4 & 5 & 6\\
+  \end{array}
+\end{equation}
+
+Since both $X$ and $Y$ are random, i.e. the probability of any outcome is the
+same, each outcome in the table has a probability of $\frac{1}{15}$. Combining
+identical results we get
+
+\begin{equation}
+  \begin{array}{c|ccccccccc}
+    x & -2 & -1 & 0 & 1 & 2 & 3 & 4 & 5 & 6\\[3pt]
+    \hline \\[-8pt]
+    P(Z=x) & \frac{1}{15} & \frac{1}{15} & \frac{2}{15} & \frac{2}{15} & \frac{3}{15}
+    & \frac{2}{15} & \frac{2}{15} & \frac{1}{15} & \frac{1}{15}
+  \end{array}
+\end{equation}
+
 
 \end{document}
