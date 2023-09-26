@@ -174,10 +174,90 @@ group size is $r!(n-r)!$ and hence
   {}^nC_r = \frac{{}^nP_r}{r!} = \frac{n!}{(n-r)!r!}
 \end{equation}
 
-The trick of grouping permutations that are considered to be the same result
-also works for rings. In a ring of $r$ objects where rotation is considered
-unimportant, the size of the permutation groups will be $r$, since there are $r$
-rotations of the ring that are considered to be the same result. If the ring can
-also be flipped, that doubles the number of permutations considered to be the
-same result, so size of each permutation group is $2r$.
+\section{Probability}
+\subsection{Conditional probability}
+
+$P(A\,|\,B)$ is the probability that an event A occurs given that an event B also
+occurs. To calculate it, restrict the possibility space to only those outcomes
+in which B occurs and consider how many times A also occurs.
+
+\begin{equation} \label{eq:4}
+  P(A\,|\,B) = \frac{P(A\cap B)}{P(B)}
+\end{equation}
+
+Since $P(A\cap B) = P(B\cap A)$ this also gives us
+
+\begin{equation} \label{eq:5}
+  P(A\,|\,B)P(B) = P(B\,|\,A)P(A)
+\end{equation}
+\subsection{Independent events}
+
+Events A and B are independent if the occurrence of event B does not affect the
+probability that A also occurs, i.e.
+
+\begin{equation}
+  P(A\,|\,B) = P(A)\hspace{3em} \mathrm{and}\hspace{3em} P(B\,|\,A) = P(B)
+\end{equation}
+
+Substituting equation (\ref{eq:4}) gives, \textit{for independent events only}
+
+\begin{equation}
+  P(A\cap B) = P(A)P(B)
+\end{equation}
+
+\subsection{Mutually exclusive events}
+
+Events are mutually exclusive if
+
+\begin{equation}
+  P(A\cap B) = 0
+\end{equation}
+
+\subsection{Exhaustive events}
+
+Events are exhaustive if
+
+\begin{equation}
+  P(A\cup B) = 1
+\end{equation}
+
+\subsection{Non-occurrence}
+
+If $P(A)$ is the probability that event A occurs, $P(A^\prime)$ is the
+probability that A \textit{does not} occur. The following identities are useful
+
+\begin{eqnarray}
+  P(A) = P(A\cap B) + P(A\cap B^\prime) \\
+  P(B) = P(B\cap A) + P(B\cap A^\prime) \\
+  P(A^\prime \cap B^\prime) = 1 - P(A \cup B)
+\end{eqnarray}
+
+\subsection{Bayes Theorem}
+
+Rearranging equation (\ref{eq:5}) gives Bayes Theorem for two events
+
+\begin{equation}
+  P(A\,|\,B) = \frac{P(B\,|\,A)\ P(A)}{P(B)}
+\end{equation}
+
+\noindent If $A_i, i = 1, 2, 3, \ldots, n$ are $n$ exhaustive events then
+
+\begin{equation}
+  P(B) = \sum_{i=1}^{n} P(B\cap A_i)
+\end{equation}
+
+\begin{equation}
+  \Rightarrow P(A_i\,|\,B) = \frac{P(B\,|\,A_i) P(A_i)}{\sum\limits_{j=1}^{n}P(B\,|\,A_j) P(A_j)}
+\end{equation}
+
+\begin{figure}[ht]
+  \includegraphics{bayes-theorem}
+
+  \caption{Bayes Theorem}
+  \label{fig:3}
+\end{figure}
+
+\noindent Figure \ref{fig:3} shows this relationship on a tree diagram.
+
+
 \end{document}
