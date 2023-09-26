@@ -94,12 +94,32 @@ for each of those $n$ ways, $(n-1)$ ways to fill the second number, continuing
 until there is only one option for the final number. If $A_n$ is the number of
 possible arrangements of $n$ numbers, therefore
 
-\begin{equation}
+\begin{equation} \label{eq:3}
   A_n = n!
 \end{equation}
 
-These numbers can, of course, represent any set of $n$ distinct objects -- you
-could always write the numbers on a sticky label and attach them to the objects.
+These numbers can, of course, represent any set of $n$ distinct objects -- if
+they were physical objects you could always write the numbers on sticky labels
+and attach them to the objects.
+
+\section{Groupings of arrangements}
+
+Equation (\ref{eq:3}) gives the number of arrangements of distinct objects, but
+what if some of the objects are indistinguishable from one another, e.g. you
+wish to know how many arrangements can be made of 3 black balls and 2 white
+balls, given that you can't tell the difference between balls of the same
+colour?
+
+The trick is to first label the objects, so that you \textit{can} tell the
+difference, then group together the arrangements that \textit{would} be
+indistinguishable without the labels. The answer is then the number of groups,
+which can be calculated by dividing the total possible arrangements by the size
+of a group.
+
+In the example there are $5!$ ways of arranging the labelled balls, and each
+grouping includes the $3!$ ways the black balls could be arranged and the $2!$
+ways the white balls could be arranged that would result in indistinguishable
+results (see Figure \ref{fig:2}).
 
 \begin{figure}[ht]
   \begin{center}
@@ -110,46 +130,45 @@ could always write the numbers on a sticky label and attach them to the objects.
   \label{fig:2}
 \end{figure}
 
-A question that does, however, arise, is what happens if some of the objects are
-identical, e.g. how many arrangements can be made of 3 black balls and 2 white
-balls, given that you can't tell the difference between balls of the same
-colour? The trick here is to label them first, so that you \textit{can} tell the
-difference, then group the results together that would be indistinguishable
-without the labels. In this example there are $5!$ ways of arranging the
-labelled balls, and each grouping includes the $3!$ ways the black balls could
-be arranged and the $2!$ ways the white balls could be arranged that would
-result in indistinguishable results (see Figure \ref{fig:2}). Thus each group
-contains $3!2! = 12$ results, meaning that there are $5!/12 = 10$
-distinguishable arrangements.
+Thus the size of each group is $3!2!$, and the number of arrangements, given
+that you can't tell the difference between balls of the same colour, is
+$5!/(3!2!) = 10$.
 
+\section{Rings}
 
+If $n$ objects are arranged in a ring, and the orientation of the ring is
+considered to be unimportant, then the size of the groupings of
+indistinguishable arrangements is equal to the number of times the ring can be
+rotated to give a new arrangement before it ends up back at the start. If there
+are $n$ objects on the ring, therefore, the size of the groupings is $n$.
+Hence, if $R_n$ is the number of distinguishable arrangements on a ring
+
+\begin{equation}
+  R_n = \frac{n!}{n} = (n-1)!
+\end{equation}
+
+If the ring may also be flipped, with all possible rotated arrangements in the
+flipped state also to be considered indistinguishable, then the size of the
+groupings is $2n$, and the number of distinguishable arrangements is $R_n / 2$.
 
 \section{Permutations and Combinations}
 
-If were to write down all the ways that two numbers can be randomly selected from
-the set \{1, 2, 3, 4, 5\}, working methodically we would write \{1,2\}, \{1,3\},
-\{1,4\}, \{1,5\}, \{2,1\}, \{2,3\} \ldots. Since there are 5 ways of filling the
-first number, and then 4 ways of filling the second number for each of those
-5 ways, there are a total of 20 possible results.
-
-Generalising, if ${}^nP_r$ is the number of possible results from selecting $r$
-objects from a set of $n$ objects, a.k.a. the number of permutations,
+The number of permutations, ${}^nP_r$, is the number of possible arrangements
+resulting from selecting $r$ objects from a set of $n$ objects. The number of
+ways of arranging the $n$ objects is $n!$, but only the first $r$ objects are
+distinguishable. This means that the arrangements can be grouped by
+considering all sub-arrangement of the remaining $(n-r)$ objects to be
+indistinguishable, i.e. the group size is $(n-r)!$. Thus
 
 \begin{equation}
   {}^nP_r = \frac{n!}{(n-r)!}
 \end{equation}
 
-If, in the original example, we wanted to consider \{1,2\} and \{2,1\} to be the
-same result, i.e. we did not consider order to be important, we can split the
-original permutations up into groups where the results are considered to be the
-same. In this case, the size of each group is 2, so there are 10 possible
-results.
-
-In general, if we select $r$ objects from $n$ objects and then group them on the
-basis that order is unimportant, each group will be $r!$ in size since there are
-$r!$ ways of arranging $r$ objects. If, then, ${}^nC_r$ is the number of
-possible results from selecting $r$ objects from a set of $n$ objects if order
-is considered unimportant, a.k.a. the number of combinations
+The number of combinations, ${}^nC_r$, is the number of permutations but
+considering order to be unimportant. This means the groupings of arrangements
+include not only all possible sub-arrangements of the remaining $(n-r)$ objects,
+but also all possible sub-arrangements of the $r$ selected objects. Thus the
+group size is $r!(n-r)!$ and hence
 
 \begin{equation}
   {}^nC_r = \frac{{}^nP_r}{r!} = \frac{n!}{(n-r)!r!}
