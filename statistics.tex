@@ -264,27 +264,28 @@ Rearranging equation (\ref{eq:5}) gives Bayes Theorem for two events
 
 \noindent Figure \ref{fig:3} shows this relationship on a tree diagram.
 
-\section{Random variables}
+\section{Discrete random variables}
 
 \subsection{Definition}
 
-A random variable is a variable whose possible values are numerical outcomes of
-a random phenomenon. It embodies multiple values simultaneously in the form of a
-probability mass function (PMF). You cannot retrieve a value from a random variable,
-you can only retrieve the probability that the outcome of the associated random
-phenomenon will either be a value or be within a range of values.
+A discrete random variable is a variable whose possible values are discrete
+numerical outcomes of a random phenomenon. It embodies multiple possible values
+simultaneously in the form of a probability mass function (PMF). You cannot
+retrieve a value from a random variable, you can only retrieve the probability
+that the outcome of the associated random phenomenon will either be a value or
+be within a range of values.
 
 \subsection{Operations}
 
-Operations on a random variable are transformations of the probability mass
-function. For example if $X$ is a random selection of an equally weighted
-integer in the range $[-2, 2]$ then its PMF is
+Operations on a discrete random variable are transformations of the associated
+probability mass function. For example if $X$ is a random selection of an
+equally weighted integer in the range $[-2, 2]$ then its PMF is
 
 \begin{equation}
   \begin{array}{c|ccccc}
     x & -2 & -1 & 0 & 1 & 2 \\[3pt]
     \hline \\[-8pt]
-    P(X=x) & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5}
+    P(X\!=\!x) & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5}
   \end{array}
 \end{equation}
 
@@ -294,7 +295,7 @@ integer in the range $[-2, 2]$ then its PMF is
   \begin{array}{c|ccc}
     x & 0 & 1 & 4 \\[3pt]
     \hline \\[-8pt]
-    P(Y=x) & \frac{1}{5} & \frac{2}{5} & \frac{2}{5}
+    P(Y\!=\!x) & \frac{1}{5} & \frac{2}{5} & \frac{2}{5}
   \end{array}
 \end{equation}
 
@@ -304,7 +305,7 @@ integer in the range $[-2, 2]$ then its PMF is
   \begin{array}{c|ccccc}
     x & -\frac{3}{2} & -1 & -\frac{1}{2} & 0 & \frac{1}{2} \\[3pt]
     \hline \\[-8pt]
-    P(Z=x) & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5}
+    P(Z\!=\!x) & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5}
   \end{array}
 \end{equation}
 
@@ -314,7 +315,7 @@ integer in the range $[-2, 2]$ then its PMF is
   \begin{array}{c|ccccc}
     x & g(-2) & g(-1) & g(0) & g(1) & g(2) \\[3pt]
     \hline \\[-8pt]
-    P(Y=x) & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5}
+    P(Y\!=\!x) & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5} & \frac{1}{5}
   \end{array}
 \end{equation}
 
@@ -343,10 +344,72 @@ identical results we get
   \begin{array}{c|ccccccccc}
     x & -2 & -1 & 0 & 1 & 2 & 3 & 4 & 5 & 6\\[3pt]
     \hline \\[-8pt]
-    P(Z=x) & \frac{1}{15} & \frac{1}{15} & \frac{2}{15} & \frac{2}{15} & \frac{3}{15}
+    P(Z\!=\!x) & \frac{1}{15} & \frac{1}{15} & \frac{2}{15} & \frac{2}{15} & \frac{3}{15}
     & \frac{2}{15} & \frac{2}{15} & \frac{1}{15} & \frac{1}{15}
   \end{array}
 \end{equation}
 
+\subsection{Expectation}
 
+The expectation of a function $g$ of $X$ is defined as
+
+\begin{equation} \label{eq:6}
+  E(g(X)) = \sum_{all\ x} g(x)P(X\!=\!x)
+\end{equation}
+where $P(X\!=\!x)$ is the probability that the outcome of $X$ is $x$.
+
+$E(X)$, often written as $\mu$, is called the expected value of $X$. If $X_1,
+X_2, \ldots, X_n$ are $n$ independent random variables with PMF identical to
+$X$, then the mean of their outcomes as $n\rightarrow\infty$ is equal to
+$E(X)$.
+
+$E((X-\mu)^2)$, often written as $Var(X)$, is called the variance of $X$. If
+$X_1, X_2, \ldots, X_n$ are $n$ independent random variables with PMF identical
+to $X$, then the variance of their outcomes as $n\rightarrow\infty$ is equal to
+$Var(X)$.
+
+An alternative form for variance is available by multiplying out $(X-\mu)^2$
+
+\begin{eqnarray}
+  E((X-\mu)^2) & = & \sum_{all\ x} (x-\mu)^2P(X\!=\!x) \nonumber\\
+  & = &  \sum_{all\ x}x^2 P(X\!=\!x) - 2\mu\sum_{all\ x}x P(X\!=\!x) +
+  \mu^2\sum_{all\ x}P(X\!=\!x) \nonumber\\
+  & = & E(X^2) - E^2(X)
+\end{eqnarray}
+
+\subsection{Expectation arithmetic}
+
+From equation (\ref{eq:6}), if $a$ and $b$ are constants then
+
+\begin{equation}
+  E(aX + b) = a\sum_{all\ x}xP(X\!=\!x)+ b\sum_{all\ x}P(X\!=\!x)  = aE(X) + b
+\end{equation}
+
+\begin{eqnarray}
+  Var(aX + b) &=& E(a^2X^2 + 2abX + b^2) - (aE(X) + b)^2 \nonumber\\
+  &=& a^2Var(X)
+\end{eqnarray}
+\noindent For discrete random variables $X$ and $Y$
+
+\begin{eqnarray}
+  E(aX + bY) & = & \sum_{all\,x}\sum_{all\,y}(ax + by)P(X\!=\!x,Y\!=\!y)\nonumber\\
+  & = & a\sum_{all\,x}x\sum_{all\,y}P(X\!=\!x,Y\!=\!y)\nonumber\\
+  & & \mbox{} + b\sum_{all\,y}y\sum_{all\,x} P(X\!=\!x,Y\!=\!y)\nonumber\\
+  & = & a\sum_{all\,x}xP(X\!=\!x) + b\sum_{all\,y}yP(Y\!=\!y)\nonumber\\
+  & = & aE(X) + bE(Y)
+\end{eqnarray}
+
+\begin{eqnarray} \label{eq:7}
+  Var(aX + bY) & = & E(aX + bY)^2) - E^2(aX + bY) \nonumber\\
+  &=& a^2(E(X^2) - E^2(X)) \nonumber\\
+  & & \mbox{} + b^2(E(Y^2) - E^2(Y)) \nonumber\\
+  & & \mbox{} + ab(E(XY) - E(X)E(Y))
+\end{eqnarray}
+
+\noindent The last term on the right of equation (\ref{eq:7}) is equal to zero
+iff $X$ and $Y$ are \textit{independent}, in which case
+
+\begin{equation}
+  Var(aX + bY) = a^2Var(X) + b^2Var(Y)
+\end{equation}
 \end{document}
