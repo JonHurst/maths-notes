@@ -358,10 +358,10 @@ The expectation of a function $g$ of $X$ is defined as
 \end{equation}
 where $P(X\!=\!x)$ is the probability that the outcome of $X$ is $x$.
 
-$E(X)$, often written as $\mu$, is called the expected value of $X$. If $X_1,
-X_2, \ldots, X_n$ are $n$ independent random variables with PMF identical to
-$X$, then the mean of their outcomes as $n\rightarrow\infty$ is equal to
-$E(X)$.
+$E(X)$ is called the expected value of $X$. If $X_1, X_2, \ldots, X_n$ are $n$
+independent random variables with PMF identical to $X$, then the mean of their
+outcomes as $n\rightarrow\infty$ is equal to $E(X)$. E(X) is often written as
+$\mu$.
 
 $E((X-\mu)^2)$, often written as $Var(X)$, is called the variance of $X$. If
 $X_1, X_2, \ldots, X_n$ are $n$ independent random variables with PMF identical
@@ -417,11 +417,11 @@ iff $X$ and $Y$ are \textit{independent}, in which case
 
 \subsection{Uniform distribution}
 
-If a distribution is uniform, each result in the set ${x_1, x_2, \ldots, x_n}$ is
+If a distribution is uniform, each result in the set $\{x_1, x_2, \ldots, x_n\}$ is
 equally likely, i.e.
 
 \begin{equation}
-  P(X\!=\!x_i) = \frac{1}{n} \hspace{5em}\forall i \in [1, n]
+  P(X\!=\!x_i) = \frac{1}{n} \hspace{5em}\forall i \in 1, 2, \ldots, n
 \end{equation}
 
 \noindent Hence
@@ -433,4 +433,129 @@ equally likely, i.e.
 \begin{equation}
   Var(X) = \frac{1}{n}\sum_{all\,i}x_i^2 - E^2(X)
 \end{equation}
+
+\subsection{Geometric distribution}
+
+If $X$ is the number of independent trials to obtain the first successful
+outcome, where the probability of a successful outcome is $p$, then $X$ is
+distributed geometrically with parameter $p$ (written as $X\sim Geo(p)$) and
+
+\begin{eqnarray}
+  P(X\!=\!x) &=& (1-p)^{x-1}p \\
+  P(X\!>\!x) &=& (1-p)^x \\
+  P(X\!\leq\!x) &=& 1 - (1-p)^x
+\end{eqnarray}
+
+\begin{eqnarray}
+  E(X) &=& \sum_{i=1}^\infty ip(1-p)^{i-1} \nonumber\\
+  &=& p + \sum_{i=2}^\infty ip(1-p)^{i-1} \nonumber\\
+  &=& p + (1-p)\sum_{i=2}^\infty [(i-1) + 1]p(1-p)^{i-2}]\nonumber\\
+  &=& p + (1-p)\left[E(X) + 1\right]\nonumber
+\end{eqnarray}
+
+\begin{equation}
+  \Rightarrow E(X) = \frac{1}{p}
+\end{equation}
+
+\begin{eqnarray}
+  E(X^2) &=& \sum_{i=1}^\infty i^2p(1-p)^{i-1} \nonumber\\
+  &=& p + (1-p)\sum_{i=2}^\infty [(i-1)^2 +2(i-1) +1]p(p-1)^{i-2} \nonumber\\
+  &=& p + (1-p)[E(X^2) + 2E(X) + 1]\nonumber
+\end{eqnarray}
+
+\begin{equation}
+  \Rightarrow E(X^2) = \frac{2 - p}{p^2}
+\end{equation}
+
+\begin{equation}
+  \Rightarrow Var(X) = \frac{1 - p}{p^2}
+\end{equation}
+
+\subsection{Binomial distribution}
+
+Let $X$ be the number of ``successful'' outcomes from a series of $n$
+independent trials, where $p$ is the probability of a successful trial. Then $X$
+has a binomial distribution, written $X \sim B(n,p)$ and
+
+\begin{equation}
+  P(X\!=\!r) = {}^nC_rp^r(1-p)^{n-r}
+\end{equation}
+
+A good way to think about this is to consider the series of trials as a
+probability tree. Any path through the tree that results in $r$ successes has a
+probability of $p^r(1-p)^{n-r}$. We then need to work out how many paths there
+are through the tree that contain $r$ successes. To do this, we need to see how
+many ways there are to choose $r$ of the $n$ trials to be successes, which is
+${}^nC_r$.
+
+To find the expected value and variance, we first need to consider variables
+with the Bernoulli distribution. A Bernoulli variable has value $1$ with a
+probability of $p$ and a value $0$ with a probability of $(1-p)$. If $A$ is a
+Bernoulli variable
+
+
+\begin{equation}
+  E(A) = 0(1-p) + 1(p) = p \\
+\end{equation}
+\begin{equation}
+  E(A^2) = 0^2(1-p) + 1^2(p) = p \\
+\end{equation}
+\begin{equation}
+  Var(A) = p(1-p)
+\end{equation}
+
+If $X\sim B(n,p)$ and $A_1, A_2, \ldots, A_n$ are $n$ independent identically
+distributed Bernoulli trials with probability of success $p$ then
+
+\begin{equation}
+  X = \sum_{i=1}^n A_i
+\end{equation}
+
+Hence
+
+\begin{equation}
+  E(X) = nE(A_1) = np
+\end{equation}
+\begin{equation}
+  Var(X) = nVar(A_1) = np(1-p)
+\end{equation}
+
+\subsection{Poisson distribution}
+
+The Poisson distribution is the limiting case of the Binomial distribution when
+$n\rightarrow\infty$ and $np = \lambda$ where $\lambda$ is a constant used as
+the distribution parameter. If $X\sim Po(\lambda)$
+
+\begin{equation}\label{eq:8}
+  P(X\!=\!k) = \lim_{n
+    \rightarrow\infty}{}^nC_r\left(\frac{\lambda}{n}\right)^k
+  \left(\left(1 + \frac{-\lambda}{n}\right)^{\frac{n-k}{-\lambda}}\right)^{-\lambda}
+\end{equation}
+
+\begin{equation}\label{eq:9}
+  \lim_{n\rightarrow\infty}\frac{{}^nC_r}{n^k} =
+  \lim_{n\rightarrow\infty}\frac{(n)(n-1)(n-2)\ldots(n-k+1)}{n^k} = 1
+\end{equation}
+
+Substituting equation (\ref{eq:9}) into equation (\ref{eq:8}) and recognising
+that the limit of the rightmost term of equation (\ref{eq:9}) is $e^{-\lambda}$
+
+\begin{equation}
+  P(X\!=\!k) = \frac{\lambda^k}{n!}e^{-\lambda}
+\end{equation}
+
+Since the Poisson distribution is the limiting case of the Binomial
+distribution, the expected value and variance are found by substituting $np =
+\lambda$ and $(1-p) = 1$ into the equations of the Binomial
+
+\begin{equation}
+  E(X) = \lambda
+\end{equation}
+\begin{equation}
+  Var(X) = \lambda
+\end{equation}
+
+The Poisson distribution can be used as a good approximation for the Binomial
+distribution if $n$ is large and $p$ is small. The textbook gives \mbox{$n\ge 50$} and
+$p\le 0.1$ as suitable cutoffs.
 \end{document}
