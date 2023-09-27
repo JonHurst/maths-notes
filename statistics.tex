@@ -412,4 +412,25 @@ iff $X$ and $Y$ are \textit{independent}, in which case
 \begin{equation}
   Var(aX + bY) = a^2Var(X) + b^2Var(Y)
 \end{equation}
+
+\section{Standard discrete distributions}
+
+\subsection{Uniform distribution}
+
+If a distribution is uniform, each result in the set ${x_1, x_2, \ldots, x_n}$ is
+equally likely, i.e.
+
+\begin{equation}
+  P(X\!=\!x_i) = \frac{1}{n} \hspace{5em}\forall i \in [1, n]
+\end{equation}
+
+\noindent Hence
+
+\begin{equation}
+  E(X) = \frac{1}{n}\sum_{all\,i}x_i
+\end{equation}
+
+\begin{equation}
+  Var(X) = \frac{1}{n}\sum_{all\,i}x_i^2 - E^2(X)
+\end{equation}
 \end{document}
