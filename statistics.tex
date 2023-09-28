@@ -540,14 +540,14 @@ If $X\sim Po(\lambda)$
 
 \begin{equation}\label{eq:9}
   \lim_{n\rightarrow\infty}\frac{{}^nC_r}{n^k} =
-  \lim_{n\rightarrow\infty}\frac{(n)(n-1)(n-2)\ldots(n-k+1)}{n^k} = 1
+  \lim_{n\rightarrow\infty}\frac{(n)(n-1)(n-2)\ldots(n-k+1)}{n^kk!} = \frac{1}{k!}
 \end{equation}
 
 Substituting equation (\ref{eq:9}) into equation (\ref{eq:8}) and recognising
 that the limit of the rightmost term of equation (\ref{eq:9}) is $e^{-\lambda}$
 
 \begin{equation}
-  P(X\!=\!k) = \frac{\lambda^k}{n!}e^{-\lambda}
+  P(X\!=\!k) = \frac{\lambda^k}{k!}e^{-\lambda}
 \end{equation}
 
 Since the Poisson distribution is the limiting case of the Binomial
