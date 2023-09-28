@@ -564,4 +564,15 @@ distribution, the expected value and variance are found by substituting $np =
 The Poisson distribution can be used as a good approximation for the Binomial
 distribution if $n$ is large and $p$ is small. The textbook gives \mbox{$n\ge 50$} and
 $p\le 0.1$ as suitable cutoffs.
+
+If $X\sim Po(m)$, $Y\sim Po(n)$ and $X$ and $Y$ are independent then
+
+\begin{equation}
+  X + Y\sim Po(m + n)
+\end{equation}
+
+This arises from the fact that the Poisson distribution parameter is not tied to
+the actual interval under consideration, and thus $X$ and $Y$ can be considered
+to both relate to the same arbitrary interval. $X + Y$ is then the total number
+of times the events occur in this arbitrary interval.
 \end{document}
