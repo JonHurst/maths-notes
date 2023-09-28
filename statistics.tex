@@ -728,4 +728,33 @@ $X_i\sim N(\mu_i, \sigma_i^2)$ then
   continuity correction.
 \end{itemize}
 
+\section{Sampling distributions}
+
+If a set of random samples are taken from a population with a given
+distribution, then the process of selecting the samples is a random phenomena
+and any statistical property extracted from the set will, itself, be a random
+variable.
+
+A common statistic is the sample mean. If $X_1, X_2, \ldots, X_n$ are $n$
+independent random samples taken from a population and $\overline{X}$ is the
+sample mean of the sampling distribution then
+
+\begin{equation}
+  \overline{X} = \frac{\sum_{i=1}^{n}X_i}{n}
+\end{equation}
+
+If the samples are taken from a population with a Normal distribution, then each
+$X_i$ has a distribution identical to the population and $\overline{X}$ must
+itself be a Normal distribution. If $X_1\sim N(\mu,\sigma^2)$ then, using
+expectation arithmetic
+
+\begin{equation}
+  E(\overline{X}) = \mu
+\end{equation}
+\begin{equation}
+  Var(\overline{X}) = \frac{\sigma^2}{n}
+\end{equation}
+\begin{equation}
+  \Rightarrow \hspace{5em} \overline{X}\sim N\left(\mu, \frac{\sigma^2}{n}\right)
+\end{equation}
 \end{document}
