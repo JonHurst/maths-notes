@@ -572,9 +572,6 @@ the actual interval under consideration, and thus $X$ and $Y$ can be considered
 to both relate to the same arbitrary interval. $X + Y$ is then the total number
 of times the events occur in this arbitrary interval.
 
-The Poisson distribution can be used as a good approximation for the Binomial
-distribution if $n$ is large and $p$ is small. The textbook gives \mbox{$n\ge 50$} and
-$p\le 0.1$ as suitable cutoffs.
 \section{Continuous random variables}
 \subsection{Definition}
 
@@ -714,4 +711,21 @@ $X_i\sim N(\mu_i, \sigma_i^2)$ then
 \begin{equation}
   \sum_{i=1}^{n}X_i \sim N\left(\sum_{i=1}^{n}\mu_i\ ,\ \sum_{i=1}^{n}\sigma_i^2\right)
 \end{equation}
+
+\section{Relationships between distributions}
+\begin{itemize}
+\item The Poisson distribution is the limit of the Binomial as
+  $n\rightarrow\infty$ with $np$ constant. It can thus used as a good
+  approximation for the Binomial distribution if $n$ is large and $p$ is small.
+  Simply use $np$ for $\lambda$.
+  The textbook gives \mbox{$n\ge 50$} and $p\le 0.1$ as suitable cutoffs.
+\item The Normal distribution is a good approximation for the Binomial if $np>5$
+  and $n(1-p)>5$. Use $np$ for $\mu$ and $np(1-p)$ for $\sigma^2$. A correction
+  for continuity will be required, e.g.\ if looking for \mbox{$P(X<5)$} look for $P(X\le
+  4.5)$ in the Normal, but if looking for $P(X\le5)$ look for $P(x\le 5,5)$.
+\item The Normal distribution is a good approximation for the Poisson if
+  $\lambda\ge 15$. Use $\lambda$ for both $\mu$ and $\sigma^2$ and apply a
+  continuity correction.
+\end{itemize}
+
 \end{document}
