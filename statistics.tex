@@ -658,7 +658,7 @@ If $X$ is a continuous random variable with PMF $f$ and $X\sim R(a, b)$ then
 \begin{equation}
   f(x) = \left\{
   \begin{array}{ll}
-    \frac{1}{b-a} & a\le x\le b\\\\
+    (b-a)^{-1} & a\le x\le b\\\\
     0 & \mbox{otherwise}
   \end{array}
   \right.
@@ -682,13 +682,13 @@ approximation for random phenomena found in nature.
 If $X \sim N(\mu,\sigma^2)$ and $f$ is the PMF of $X$ then
 
 \begin{equation}
-  f(x) = \frac{\mathrm{exp}\left(\frac{-(x-\mu)^2}{2\sigma^2}\right)}{\sigma\sqrt{2\pi}}
+  f(x) = \frac{1}{\sigma\sqrt{2\pi}}\mathrm{exp}\left(\frac{-(x-\mu)^2}{2\sigma^2}\right)
 \end{equation}
 
 The ``standard'' normal variable, $Z$, is defined as $Z\sim N(0,1)$. If $\phi$ is
 the PMF of $Z$ then
 \begin{equation}\label{eq:12}
-  \phi(x) = \frac{\mathrm{exp}\left(\frac{-x^2}{2}\right)}{\sqrt{2\pi}}
+  \phi(x) = \frac{1}{\sqrt{2\pi}}\mathrm{exp}\left(\frac{-x^2}{2}\right)
 \end{equation}
 
 And if $\Phi$ is the cumulative distribution function of $Z$ then
