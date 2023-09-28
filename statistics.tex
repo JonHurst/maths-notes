@@ -526,9 +526,9 @@ The Poisson distribution is the limiting case of the Binomial distribution when
 $n\rightarrow\infty$ and $np = \lambda$ where $\lambda$ is a constant used as
 the distribution parameter. It is useful for modelling the number of times an
 event occurs in an interval of time or space where the mean number of times it
-occurs in the interval, $\lambda$ is known. The interval is effectively divided
-into an infinite number of trials, each with an infinitesimal probability of
-occuring.
+occurs in the interval, $\lambda$, is known. The interval is effectively divided
+into an infinite number of trials, each with the same infinitesimal probability
+of generating a ``success''.
 
 If $X\sim Po(\lambda)$
 
@@ -561,10 +561,6 @@ distribution, the expected value and variance are found by substituting $np =
   Var(X) = \lambda
 \end{equation}
 
-The Poisson distribution can be used as a good approximation for the Binomial
-distribution if $n$ is large and $p$ is small. The textbook gives \mbox{$n\ge 50$} and
-$p\le 0.1$ as suitable cutoffs.
-
 If $X\sim Po(m)$, $Y\sim Po(n)$ and $X$ and $Y$ are independent then
 
 \begin{equation}
@@ -575,4 +571,147 @@ This arises from the fact that the Poisson distribution parameter is not tied to
 the actual interval under consideration, and thus $X$ and $Y$ can be considered
 to both relate to the same arbitrary interval. $X + Y$ is then the total number
 of times the events occur in this arbitrary interval.
+
+The Poisson distribution can be used as a good approximation for the Binomial
+distribution if $n$ is large and $p$ is small. The textbook gives \mbox{$n\ge 50$} and
+$p\le 0.1$ as suitable cutoffs.
+\section{Continuous random variables}
+\subsection{Definition}
+
+A continuous random variable is a variable whose possible values are real number
+outcomes of a random phenomenon. Its associated probability mass function is
+therefore continuous. If continuous random variable $X$ has probability mass
+function $f$ then
+
+\begin{equation}
+  P(x_1 \le X \le x_2) = \int_{x_1}^{x_2}f(x)\,dx
+\end{equation}
+
+The probability that $X$ will have any given value is infinitesimal, so
+continuous random variables imply the use of ranges.
+
+\subsection{Cumulative distribution function}
+
+If $X$ is a continuous random variable with PMF $f$ then $F(x)$ is the
+cumulative distribution function where
+
+\begin{equation}
+  P(X\le x) = F(x) = \int_a^x f(t)\,dt \hspace{5em};\ a\le x\le b
+\end{equation}
+
+This is particularly useful for finding percentiles, e.g. $F(x)=0.5$ is the
+median value of $X$.
+
+\subsection{Expectation}
+
+If $X$ is a continuous random variable with PMF $f$ then
+
+\begin{equation}\label{eq:10}
+  E(g(X)) = \int_{all\,x}g(x)f(x)\,dx
+\end{equation}
+
+Equation (\ref{eq:10}) can be justified by considering the limiting case of a
+transformation from continuous variable to discrete variable via the
+mechanism of ``rounding down''.
+
+Let $X$ be a continuous random variable with PMF $f$, $i$ be an integer and
+$\epsilon$ be a small positive round number. Let $Y$ be a discrete random
+variable such that
+
+\begin{equation}
+  P(Y\!=\!i\epsilon) = P(i\epsilon\le X\le (i+1)\epsilon) =
+  \int_{i\epsilon}^{(i+1)\epsilon}f(x)\,dx
+\end{equation}
+
+Then from equation (\ref{eq:6})
+\nopagebreak
+\begin{equation}
+  E(g(Y)) = \sum_{all\,i}g(i\epsilon)\int_{i\epsilon}^{(i+1)\epsilon}f(x)\,dx
+\end{equation}
+
+If $E(g(X))$ is considered to be the limiting case of $E(g(Y))$ as
+$\epsilon\rightarrow 0$ (and hence $i\epsilon\rightarrow x$) then
+
+\begin{eqnarray}
+  E(g(X)) &=& \lim_{\epsilon\rightarrow 0}
+  \sum_{all\,i}g(i\epsilon)\int_{i\epsilon}^{(i+1)\epsilon}f(x)\,dx\nonumber\\
+  &=& \int_{all\,x}g(x)f(x)\,dx
+\end{eqnarray}
+
+Of particular interest are
+
+\begin{equation}\label{eq:11}
+  E(X) = \int_{all\,x}xf(x)\,dx = \mu
+\end{equation}
+\begin{equation}
+  Var(X) = E((X-\mu)^2) = E(X^2) - E^2(\mu)
+\end{equation}
+
+These strongly resemble their discrete counterparts, as expected. Note also that
+equation~(\ref{eq:11}) is the same as the equation for calculating the centre of
+gravity of a flat plate, so the expected value of a continuous random variable
+can be found at the centre of gravity of its probability mass function.
+
+\section{Standard continuous distributions}
+
+\subsection{Rectangular (or uniform) distribution}
+
+If $X$ is a continuous random variable with PMF $f$ and $X\sim R(a, b)$ then
+
+\begin{equation}
+  f(x) = \left\{
+  \begin{array}{ll}
+    \frac{1}{b-a} & a\le x\le b\\\\
+    0 & \mbox{otherwise}
+  \end{array}
+  \right.
+\end{equation}
+
+\begin{equation}
+  E(X) = \frac{a+b}{2}
+\end{equation}
+\begin{equation}
+  E(X^2) = \frac{a^2+ab+b^2}{3}
+\end{equation}
+\begin{equation}
+  Var(X) = \frac{(a-b)^2}{12}
+\end{equation}
+
+\subsection{Normal distribution}
+
+The rationale for the Normal distribution is simply that it is often a good
+approximation for random phenomena found in nature.
+
+If $X \sim N(\mu,\sigma^2)$ and $f$ is the PMF of $X$ then
+
+\begin{equation}
+  f(x) = \frac{\mathrm{exp}\left(\frac{-(x-\mu)^2}{2\sigma^2}\right)}{\sigma\sqrt{2\pi}}
+\end{equation}
+
+The ``standard'' normal variable, $Z$, is defined as $Z\sim N(0,1)$. If $\phi$ is
+the PMF of $Z$ then
+\begin{equation}\label{eq:12}
+  \phi(x) = \frac{\mathrm{exp}\left(\frac{-x^2}{2}\right)}{\sqrt{2\pi}}
+\end{equation}
+
+And if $\Phi$ is the cumulative distribution function of $Z$ then
+
+\begin{equation}
+  \Phi(x) = \int_{-\infty}^{x}\phi(t)\,dt
+\end{equation}
+
+Tables of $\Phi(x)$ are provided in order to work with the normal distribution
+as the integral of equation (\ref{eq:12}) has no analytical solution.
+
+From symmetry, $E(X)=\mu$. Variance is included as one of the distribution
+parameters.
+
+The normal distribution has the property that the sum of independent normal
+variables is also a normal variable. Using expectation arithmetic, if $X_1, X_2,
+\ldots, X_n$ are independent normally distributed random variables where
+$X_i\sim N(\mu_i, \sigma_i^2)$ then
+
+\begin{equation}
+  \sum_{i=1}^{n}X_i \sim N\left(\sum_{i=1}^{n}\mu_i\ ,\ \sum_{i=1}^{n}\sigma_i^2\right)
+\end{equation}
 \end{document}
