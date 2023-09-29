@@ -781,4 +781,60 @@ large -- the textbook value is $n\ge 30$. This is often cited as one of the
 reasons that the Normal distribution is so prevalent in nature. The proof of the
 Central Limit Theorem is non-trivial.
 
+\section{Confidence intervals}
+
+Given the mean and variance of a population, equation (\ref{eq:15}) allows us to
+work out a range, symmetrical about $\mu$ that would trap the sample mean with
+any given probability. Since the variance of the sample mean is inversely
+proportional to $n$, the more samples we have, the smaller this range will be.
+
+\begin{figure}[ht]
+  \includegraphics{confidence-intervals}
+  \caption{Confidence intervals}
+  \label{fig:4}
+\end{figure}
+
+Figure \ref{fig:4} shows the relationship of sample means and population mean.
+The line at the top shows the range around $\mu$ that, with a given probability
+(determined by the constant $t$), will trap a randomly selected sample mean. The
+other lines are ranges of the same width but instead centred on three sample
+means.
+
+The ranges produced by $\overline{x_1}$ and $\overline{x_2}$ trap the population
+mean, but the range produced by $\overline{x_3}$ does not. If, for example,
+there was a $95\%$ \mbox{($t=1.96$)} probability that sample means were within
+the range at the top, the probability of an occurence such as $\overline{x_3}$,
+which lies outside this range, is $5\%$.
+
+If, then, we have a randomly selected sample mean, $\overline{x}$, and use it to
+generate the range
+\begin{equation}
+  \left(\overline{x} - t\sqrt{\frac{\sigma^2}{n}},
+  \overline{x} + t\sqrt{\frac{\sigma^2}{n}}\right)
+  \hspace{3em};P(|Z|<t) = p
+\end{equation}
+then the probability that we have selected a sample mean whereby the population
+mean will be trapped by that range is $p\%$. We therefore say that we have $p\%$
+confidence that this range traps the population mean.
+
+There are two problematic assumptions in the above analysis. The first
+assumption is that $\overline{X}$ has a Normal distribution, which relies on
+either the population $X$ having a normal distribution or the sample size, $n$
+being large enough (e.g.\ $n\ge30$) that the Central Limit Theorem applies. The
+second, less likely, assumption is that we have access to $\sigma^2$, the
+population variance.
+
+If the first assumption is not valid, it is not possible to proceed. If the
+first assumption \textit{is} valid, there are ways we can proceed, albeit
+approximately, if the second assumption is not.
+
+If the sample size is large (e.g. $n\ge 30$), a good approximation of $\sigma^2$
+can be found using $\hat{\sigma}^2$, the best unbiased estimator, which is
+generated from, $s^2$, the sample variance
+\begin{equation}
+  \sigma^2 \approx \hat{\sigma}^2 = \frac{n}{n-1}s^2
+\end{equation}
+
+If the sample size is small but $X$ does have a Normal distribution, then we can
+proceed by using the t-distribution.
 \end{document}
