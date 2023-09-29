@@ -681,24 +681,41 @@ approximation for random phenomena found in nature.
 
 If $X \sim N(\mu,\sigma^2)$ and $f$ is the PMF of $X$ then
 
-\begin{equation}
+\begin{equation}\label{eq:13}
   f(x) = \frac{1}{\sigma\sqrt{2\pi}}\mathrm{exp}\left(\frac{-(x-\mu)^2}{2\sigma^2}\right)
 \end{equation}
-
 The ``standard'' normal variable, $Z$, is defined as $Z\sim N(0,1)$. If $\phi$ is
 the PMF of $Z$ then
+
 \begin{equation}\label{eq:12}
   \phi(x) = \frac{1}{\sqrt{2\pi}}\mathrm{exp}\left(\frac{-x^2}{2}\right)
 \end{equation}
-
 And if $\Phi$ is the cumulative distribution function of $Z$ then
 
 \begin{equation}
   \Phi(x) = \int_{-\infty}^{x}\phi(t)\,dt
 \end{equation}
+\begin{equation}
+  P(Z\le x) = \Phi(x)
+\end{equation}
+There is a simple relationship between $X$ and $Z$:
 
+\[
+  \frac{d}{dx}\Phi\left(\frac{x-\mu}{\sigma}\right) =
+  \frac{1}{\sigma}\phi\left(\frac{x-\mu}{\sigma}\right) = f(x)
+\]
+\[
+  \Rightarrow P(X\le x) = \int_{-\infty}^{x}f(t)\,dt =
+  \Phi\left(\frac{x-\mu}{\sigma}\right)
+  = P\left(Z\le \frac{x-\mu}{\sigma}\right)
+\]
+\begin{equation}\label{eq:14}
+  \Rightarrow Z = \frac{X-\mu}{\sigma}
+\end{equation}
 Tables of $\Phi(x)$ are provided in order to work with the normal distribution
-as the integral of equation (\ref{eq:12}) has no analytical solution.
+as the integral of equation (\ref{eq:12}) has no analytical solution. Equation
+(\ref{eq:14}) allows these tables to be used for \textit{any} Normal
+distribution.
 
 From symmetry, $E(X)=\mu$. Variance is included as one of the distribution
 parameters.
