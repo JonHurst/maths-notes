@@ -836,5 +836,18 @@ generated from, $s^2$, the sample variance
 \end{equation}
 
 If the sample size is small but $X$ does have a Normal distribution, then we can
-proceed by using the t-distribution.
+proceed by using the t-distribution. The t-distribution has sample size, $\nu$
+as a parameter. Its PMF approaches the PMF of the Normal distribution as sample
+size increases, and is more or less indistinguishable for $\nu\ge 30$. In this
+case a $p\%$ confidence interval for $\mu$ is
+\begin{equation}
+  \left(\overline{x} - t\sqrt{\frac{\hat{\sigma}^2}{n}},
+  \overline{x} + t\sqrt{\frac{\hat{\sigma}^2}{n}}\right)
+  \hspace{3em};P(|t(n-1)|<t) = p
+\end{equation}
+i.e. it is a similar procedure to using the Normal distribution, but with higher
+values for $t$, which are extracted from the t-distribution tables. I have not
+looked into the reason for this yet….
+
+
 \end{document}
