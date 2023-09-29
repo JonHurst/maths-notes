@@ -771,7 +771,14 @@ expectation arithmetic
 \begin{equation}
   Var(\overline{X}) = \frac{\sigma^2}{n}
 \end{equation}
-\begin{equation}
-  \Rightarrow \hspace{5em} \overline{X}\sim N\left(\mu, \frac{\sigma^2}{n}\right)
+\begin{equation}\label{eq:15}
+  \overline{X}\sim N\left(\mu, \frac{\sigma^2}{n}\right)
 \end{equation}
+
+The Central Limit Theorem states that equation (\ref{eq:15}) approximately holds
+for populations with \textit{any} distribution, provided that the sample size is
+large -- the textbook value is $n\ge 30$. This is often cited as one of the
+reasons that the Normal distribution is so prevalent in nature. The proof of the
+Central Limit Theorem is non-trivial.
+
 \end{document}
