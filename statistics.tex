@@ -849,5 +849,36 @@ i.e. it is a similar procedure to using the Normal distribution, but with higher
 values for $t$, which are extracted from the t-distribution tables. I have not
 looked into the reason for this yet….
 
+\section{Hypothesis testing}
 
+If we believe that a random variable has a certain associated PMF, we can
+calculate a range with a given probability of trapping any outcome. If we set
+that probability to be very high and then see an outcome outside the resulting
+range, we can say that a very low probability event has occured, and as such it
+would be reasonable to question the validity of our stated PMF.
+
+The procedure of hypothesis testing is
+\begin{enumerate}
+  \item Define the variable.
+\item State $H_0$, the null hypothesis, that the random variable has certain
+  parameters.
+\item Declare $H_1$, the alternative hypothesis, that the stated parameters are
+  different is some way.
+\item State the distribution according to $H_0$.
+\item State the type of test according to $H_1$, and the level of probability
+  at which an event occuring will be considered ``unusual''. 1\% or 5\% is
+  often used.
+\item State the rejection criteria. To do this, calculate the ``critical
+  region'', which is the region where an outcome will be considered unusual
+  enough to reject the null hypothesis.
+\item Carry out the test, and come to a conclusion.
+\end{enumerate}
+
+It is possible that a test falls in the critical region by chance, even when the
+assumptions regarding the PMF are correct. In this case we reject the null
+hypothesis, despite it being true, and have a \textbf{Type I error}.
+
+It is also possible that a test, by chance, does not fall in the critical
+region, even when the PMF is incorrect. In this case we accept the null
+hypothesis, despite it being false, and have a \textbf{Type II error}.
 \end{document}
