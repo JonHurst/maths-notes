@@ -881,4 +881,47 @@ hypothesis, despite it being true, and have a \textbf{Type I error}.
 It is also possible that a test, by chance, does not fall in the critical
 region, even when the PMF is incorrect. In this case we accept the null
 hypothesis, despite it being false, and have a \textbf{Type II error}.
+
+\section{Sample Proportion}
+
+Let $X$ be the number of successes in a sample of $n$ observations where the
+population's \textit{proportion} of successes is $p$. Then $X\sim B(n,p)$,
+i.e.\ the population proportion of successes is synonymous with the population
+probability of success.
+
+If $P_s$ is the proportion of success in the \textit{sample}, then
+
+\begin{equation}
+  P_s = \frac{X}{n}
+\end{equation}
+
+Note that the PMF of $P_s$ has the same shape as the PMF of $X$ but cannot
+itself be defined as a Binomial distribution.
+
+If $X$ can be approximated by a Normal distribution (i.e.\ $np>5$ and
+$n(1-p)>5$) then $P_s$ can also be approximated by a Normal distribution. Using
+expectation algebra
+
+\begin{equation}\label{eq:16}
+  P_s\sim N\left(p,\ \frac{p(1-p)}{n}\right)
+\end{equation}
+
+\noindent with the continuity corrections for $P_s$ being $\pm\frac{1}{2n}$
+(i.e\ the continuity corrections for $X$ divided by $n$).
+
+When using the approximation in equation (\ref{eq:16}), the parameters are $n$
+and $p$. Assuming that $n$ is specified, we can carry out hypothesis for $p$
+using observations of $P_s$ by calculating the critical region using the $p$
+specified in the null hypothesis.
+
+Calculating confidence intervals for $p$ is more tricky since we require the
+standard deviation and this is defined in terms of the unknown $p$. The best
+that can be done is to find approximate confidence intervals by using the sample
+proportion to stand in for the population proportion. If $p_s$ is the sample
+proportion then for confidence $C$, the limits are given by
+
+\begin{equation}
+  p_s\pm t\sqrt{\frac{p_s(1-p_s)}{n}}\quad;p|Z|<t=C
+\end{equation}
+where $Z\sim N(0,1)$.
 \end{document}
